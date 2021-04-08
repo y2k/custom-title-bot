@@ -11,9 +11,8 @@ let showError = (msg, error) => [
   #RemoveMessage(msg.message_id, Duration.fromSeconds(5)),
 ]
 
-let execCommand = (admins, msg) =>
-  switch Re.exec_(Re.fromString("/add_as_admin"), msg.text) {
-  | Some(_) =>
+let execCommand = (admins, msg) => {
+  let addAsAdmin = () =>
     switch msg.reply_to_message {
     | Some(reply) =>
       switch isOwner(admins, msg.from.id) {
@@ -22,13 +21,19 @@ let execCommand = (admins, msg) =>
       }
     | None => showError(msg, "4d08c20ebabf")
     }
+
+  let changeTitle = title =>
+    switch isAdmin(admins, msg.from.id) {
+    | true => [#ChangeTitle(msg.from.id, title), #RemoveMessage(msg.message_id, Duration.zero)]
+    | false => showError(msg, "6ca54ade3247")
+    }
+
+  switch Re.exec_(Re.fromString("/add_as_admin"), msg.text) {
+  | Some(_) => addAsAdmin()
   | None =>
     switch Re.findCapture1("/change_title ([a-z_-]+)", msg.text) {
-    | Some(title) =>
-      switch isAdmin(admins, msg.from.id) {
-      | true => [#ChangeTitle(msg.from.id, title), #RemoveMessage(msg.message_id, Duration.zero)]
-      | false => showError(msg, "6ca54ade3247")
-      }
+    | Some(title) => changeTitle(title)
     | None => []
     }
   }
+}
