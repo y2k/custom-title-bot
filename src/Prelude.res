@@ -32,6 +32,4 @@ module Promise = {
 }
 
 @send external toString: 'a => string = "toString"
-@scope("process") @val external argv: array<string> = "argv"
-@scope("process.env") @val external pwd: string = "PWD"
 @scope("JSON") @val external parseJsonUnsafe: string => 'a = "parse"

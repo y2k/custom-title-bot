@@ -28,7 +28,7 @@ let exampleLmdb = () => {
   openEnv(
     env,
     {
-      path: pwd ++ "/__data",
+      path: Sys.getcwd() ++ "/__data",
       mapSize: 2 * 1024 * 1024,
       maxDbs: 3,
     },

@@ -29,4 +29,4 @@ let exampleTelegram = token => {
   })
 }
 
-exampleTelegram(argv[2])
+exampleTelegram(Sys.argv[2])
