@@ -8,3 +8,4 @@
 /__data
 Playground.*
 /.vscode/settings.json
+*.log
