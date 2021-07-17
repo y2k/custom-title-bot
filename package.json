@@ -1,19 +1,20 @@
 {
-  "name": "custom-title-bot",
-  "version": "0.1",
-  "scripts": {
-    "build": "bsb -make-world",
-    "clean": "bsb -clean-world",
-    "start": "bsb -make-world -w"
-  },
-  "author": "y2k",
-  "license": "MIT",
-  "devDependencies": {
-    "@glennsl/bs-jest": "^0.7.0",
-    "bs-platform": "*"
-  },
-  "dependencies": {
-    "node-lmdb": "^0.9.4",
-    "node-telegram-bot-api": "^0.51.0"
-  }
+    "name": "custom-title-bot",
+    "version": "0.1",
+    "scripts": {
+        "build": "bsb -make-world",
+        "clean": "bsb -clean-world",
+        "start": "bsb -make-world -w",
+        "test": "jest"
+    },
+    "author": "y2k",
+    "license": "MIT",
+    "devDependencies": {
+        "@glennsl/bs-jest": "^0.7.0",
+        "bs-platform": "*"
+    },
+    "dependencies": {
+        "node-lmdb": "^0.9.4",
+        "node-telegram-bot-api": "^0.51.0"
+    }
 }
